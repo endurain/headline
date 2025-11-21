@@ -1,0 +1,18 @@
+routes:
+  /:
+    controller: 'page'
+    resource: 'posts'
+    permalink: /
+    filter: 'slug:home'
+    template: page 
+    
+  /home/: /
+
+collections:
+  /media/:
+    permalink: /{slug}/
+    template: index
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/
