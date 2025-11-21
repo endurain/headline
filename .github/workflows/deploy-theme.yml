@@ -1,0 +1,27 @@
+name: Deploy Ghost Theme
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Zip theme
+        run: |
+          zip -r theme.zip . -x '*.git*' '*.github*'
+
+      - name: Upload theme to Ghost
+        env:
+          GHOST_ADMIN_API_URL: https://central-ohio-rank-and-file-educators.ghost.io/ghost/api/admin/themes/upload/
+          GHOST_ADMIN_API_KEY: 6920bd1204c9f10001f48da7:c238974bb1ec8d6e4ad3f98d83efa39bf526a4e3d7caa6c8b522cd665fd51e35
+        run: |
+          curl -X POST "$GHOST_ADMIN_API_URL" \
+            -H "Authorization: Ghost $GHOST_ADMIN_API_KEY" \
+            -F "file=@theme.zip" \
+            -H "Accept: application/json"
