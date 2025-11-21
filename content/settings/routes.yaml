@@ -1,12 +1,12 @@
+## Trigger workflow: test comment
 routes:
   /:
-    controller: page
-    filter: slug:home
-    template: page
+    data: page.home
+    template: home
 
 collections:
   /media/:
-    permalink: /{slug}/
+    permalink: /media/{slug}/
     template: index
 
 taxonomies:
