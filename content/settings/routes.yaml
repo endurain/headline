@@ -1,12 +1,8 @@
 routes:
   /:
-    controller: 'page'
-    resource: 'posts'
-    permalink: /
-    filter: 'slug:home'
-    template: page 
-    
-  /home/: /
+    controller: page
+    filter: slug:home
+    template: page
 
 collections:
   /media/:
