@@ -1,8 +1,8 @@
 ## Trigger workflow: test comment
 routes:
   /:
-    data: page.home
     template: home
+    data: page.home
 
 collections:
   /media/:
